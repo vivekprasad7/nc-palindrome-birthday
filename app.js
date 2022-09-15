@@ -1,23 +1,3 @@
-const dob = document.querySelector("#dob")
-const checkBtn = document.querySelector("#check-btn")
-const msg = document.querySelector("#msg")
-
-checkBtn.addEventListener('click', clickHandler);
-
-function clickHandler(e){
-    var dobStr = dob.value;
-
-    if (dobStr !== ''){
-        var listOfDate = dobStr.split('-');    // 2021-08-09  => ['2021', '08', '10'] Returns an array of 3 elements
-
-        var date = {
-            day: Number(listOfDate[2]),   // element 2   > We use Number Function as most of our functions require date as number
-            month: Number(listOfDate[1]), // item 1
-            year: Number(listOfDate[0]),   // item 0
-        }
-    }
-    console.log(date);
-}
 
 
 
@@ -92,16 +72,16 @@ function getAllDateFormats(date){
 function checkPalidromeForAllDateFormats(date){
     var listOfPalindrome = getAllDateFormats(date);  // returns array with all date formats
 
-    var isPalindrome = false; // just a flag, it gets updated in case it meets the condition
+    var flag = false; // just a flag, it gets updated in case it meets the condition
 
     for ( let i =0; i < listOfPalindrome.length ; i++){
         if(checkPalindrome(listOfPalindrome[i])){   // running checkPalidrome function on array, it checks all date formats and returns true, if any date is a palindrome
-            isPalindrome = true;  
+            flag = true;  
             break;
         }
     }
 
-    return(isPalindrome);
+    return(flag);
 }
 
 function isLeapYear(year){  // 6.2
@@ -182,10 +162,37 @@ function getNextPalindromeDate(date){  // 6
     return[ctr, nextDate]; // array because we return both the variables
 }
 
-console.log(getNextPalindromeDate(date)); 
 
 
+const dob = document.querySelector("#dob")
+const checkBtn = document.querySelector("#check-btn")
+const result = document.querySelector("#result")
 
+
+function clickHandler(e){
+    var dobStr = dob.value;
+
+    if (dobStr !== ''){
+        var listOfDate = dobStr.split("-");    // 2021-08-09  => ['2021', '08', '10'] Returns an array of 3 elements
+
+        var date = {
+            day: Number(listOfDate[2]),   // element 2   > We use Number Function as most of our functions require date as number
+            month: Number(listOfDate[1]), // item 1
+            year: Number(listOfDate[0]),   // item 0
+        };
+    }
+
+    var isPalindrome = checkPalidromeForAllDateFormats(date);
+
+    if (isPalindrome){
+        result.innerText = "Yayy, Your Birthday is a Palindrome."
+    } else{
+        const [ctr, nextDate] = getNextPalindromeDate(date);
+        result.innerText = `No! your birthday is not palindrome. The next palindrome date is: ${nextDate.day}-${nextDate.month}-${nextDate.year}. You missed it by ${ctr} days. 😢😢` 
+    }
+}
+
+checkBtn.addEventListener('click', clickHandler);
 
 
 
