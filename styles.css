@@ -1,11 +1,85 @@
-body{
-    display: flex;
-    flex-direction: column;
-    max-width: 70%;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:root {
+    --primary-color: black;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    text-align: center;
+}
+
+.main {
+    margin: 2rem auto;
+    padding: 3rem 2rem;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    margin: 2rem auto;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 2rem;
 
 }
 
-.main{
-    margin:auto;
-    text-align: center;
+span{
+    color:yellow;
+}
+
+.label {
+    display: block;
+    font-size: large;
+    font-weight: 600;
+}
+
+#label-lucky-number {
+    display: block;
+    font-size: large;
+    font-weight: 600;
+}
+
+#dob {
+    font-size: large;
+    padding: 0.6rem 1rem;
+    margin: 1rem;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 200px;
+}
+
+#lucky-number {
+    font-size: large;
+    padding: 0.6rem 1rem;
+    margin: 1rem;
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 200px;
+
+}
+
+#check-btn {
+    /* width: 7rem; */
+    border: 2px solid black;
+    padding: 0.7rem 1rem;
+    border-radius: 0.5rem;
+    font-size: large;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+    background-color: white;
+    color: black;
+
+}
+
+
+
+
+@media screen and (max-width: 800px) {
+    .container {
+        max-width: 500px;
+        width: 75%;
+    }
 }
