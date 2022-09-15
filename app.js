@@ -2,6 +2,26 @@ const dob = document.querySelector("#dob")
 const checkBtn = document.querySelector("#check-btn")
 const msg = document.querySelector("#msg")
 
+checkBtn.addEventListener('click', clickHandler);
+
+function clickHandler(e){
+    var dobStr = dob.value;
+
+    if (dobStr !== ''){
+        var listOfDate = dobStr.split('-');    // 2021-08-09  => ['2021', '08', '10'] Returns an array of 3 elements
+
+        var date = {
+            day: Number(listOfDate[2]),   // element 2   > We use Number Function as most of our functions require date as number
+            month: Number(listOfDate[1]), // item 1
+            year: Number(listOfDate[0]),   // item 0
+        }
+    }
+    console.log(date);
+}
+
+
+
+
 function reverseString(str){
     var charList = str.split('');  // {'h','e','l','l','o'}
 
